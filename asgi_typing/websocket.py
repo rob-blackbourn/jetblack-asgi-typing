@@ -1,6 +1,6 @@
 """Websocket"""
 
-from typing import Dict, Iterable, Optional, Tuple
+from typing import Dict, Iterable, Optional, Tuple, Union
 
 try:
     from typing import Literal, TypedDict
@@ -206,3 +206,16 @@ class WebSocketCloseEvent(TypedDict):
     type: Literal["websocket.close"]
     code: int
     reason: Optional[str]
+
+
+ASGIWebSocketReceiveEvent = Union[
+    WebSocketConnectEvent,
+    WebSocketReceiveEvent,
+    WebSocketDisconnectEvent,
+]
+
+ASGIWebSocketSendEvent = Union[
+    WebSocketAcceptEvent,
+    WebSocketSendEvent,
+    WebSocketCloseEvent,
+]

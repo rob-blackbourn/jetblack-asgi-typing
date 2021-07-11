@@ -30,6 +30,9 @@ async def app(scope, receive, send):
         pass # Handle other types
 ```
 """
+
+from typing import Union
+
 try:
     from typing import Literal, TypedDict
 except ImportError:
@@ -142,3 +145,16 @@ class LifespanShutdownFailedEvent(TypedDict):
     """
     type: Literal["lifespan.shutdown.failed"]
     message: str
+
+
+ASGILifespanReceiveEvent = Union[
+    LifespanStartupEvent,
+    LifespanShutdownEvent,
+]
+
+ASGILifespanSendEvent = Union[
+    LifespanStartupCompleteEvent,
+    LifespanStartupFailedEvent,
+    LifespanShutdownCompleteEvent,
+    LifespanShutdownFailedEvent,
+]

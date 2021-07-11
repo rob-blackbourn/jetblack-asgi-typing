@@ -8,7 +8,9 @@ from .http import (
     HTTPResponseStartEvent,
     HTTPResponseBodyEvent,
     HTTPServerPushEvent,
-    HTTPDisconnectEvent
+    HTTPDisconnectEvent,
+    ASGIHTTPReceiveEvent,
+    ASGIHTTPSendEvent
 )
 
 from .lifespan import (
@@ -18,7 +20,9 @@ from .lifespan import (
     LifespanStartupCompleteEvent,
     LifespanStartupFailedEvent,
     LifespanShutdownCompleteEvent,
-    LifespanShutdownFailedEvent
+    LifespanShutdownFailedEvent,
+    ASGILifespanReceiveEvent,
+    ASGILifespanSendEvent
 )
 
 from .websocket import (
@@ -30,7 +34,9 @@ from .websocket import (
     WebSocketResponseStartEvent,
     WebSocketResponseBodyEvent,
     WebSocketDisconnectEvent,
-    WebSocketCloseEvent
+    WebSocketCloseEvent,
+    ASGIWebSocketReceiveEvent,
+    ASGIWebSocketSendEvent
 )
 
 from .application import (
@@ -58,6 +64,8 @@ __all__ = (
     "HTTPResponseBodyEvent",
     "HTTPServerPushEvent",
     "HTTPDisconnectEvent",
+    "ASGIHTTPReceiveEvent",
+    "ASGIHTTPSendEvent",
     "WebSocketConnectEvent",
     "WebSocketAcceptEvent",
     "WebSocketReceiveEvent",
@@ -66,12 +74,16 @@ __all__ = (
     "WebSocketResponseBodyEvent",
     "WebSocketDisconnectEvent",
     "WebSocketCloseEvent",
+    "ASGIWebSocketReceiveEvent",
+    "ASGIWebSocketSendEvent",
     "LifespanStartupEvent",
     "LifespanShutdownEvent",
     "LifespanStartupCompleteEvent",
     "LifespanStartupFailedEvent",
     "LifespanShutdownCompleteEvent",
     "LifespanShutdownFailedEvent",
+    "ASGILifespanReceiveEvent",
+    "ASGILifespanSendEvent",
     "ASGIReceiveEvent",
     "ASGISendEvent",
     "ASGIReceiveCallable",
