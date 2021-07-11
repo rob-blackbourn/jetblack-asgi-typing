@@ -31,7 +31,7 @@ async def app(scope, receive, send):
 ```
 """
 
-from typing import Union
+from typing import Callable, Awaitable, Union
 
 try:
     from typing import Literal, TypedDict
@@ -147,9 +147,21 @@ class LifespanShutdownFailedEvent(TypedDict):
     message: str
 
 
+ASGILifespanReceiveEventType = Union[
+    Literal["lifespan.startup"],
+    Literal["lifespan.shutdown"]
+]
+
 ASGILifespanReceiveEvent = Union[
     LifespanStartupEvent,
     LifespanShutdownEvent,
+]
+
+ASGILifespanSendEventType = Union[
+    Literal["lifespan.startup.complete"],
+    Literal["lifespan.startup.failed"],
+    Literal["lifespan.shutdown.complete"],
+    Literal["lifespan.shutdown.failed"]
 ]
 
 ASGILifespanSendEvent = Union[
@@ -158,3 +170,6 @@ ASGILifespanSendEvent = Union[
     LifespanShutdownCompleteEvent,
     LifespanShutdownFailedEvent,
 ]
+
+ASGILifespanReceiveCallable = Callable[[], Awaitable[ASGILifespanReceiveEvent]]
+ASGILifespanSendCallable = Callable[[ASGILifespanSendEvent], Awaitable[None]]

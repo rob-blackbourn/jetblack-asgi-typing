@@ -9,8 +9,12 @@ from .http import (
     HTTPResponseBodyEvent,
     HTTPServerPushEvent,
     HTTPDisconnectEvent,
+    ASGIHTTPReceiveEventType,
     ASGIHTTPReceiveEvent,
-    ASGIHTTPSendEvent
+    ASGIHTTPSendEventType,
+    ASGIHTTPSendEvent,
+    ASGIHTTPReceiveCallable,
+    ASGIHTTPSendCallable,
 )
 
 from .lifespan import (
@@ -21,8 +25,12 @@ from .lifespan import (
     LifespanStartupFailedEvent,
     LifespanShutdownCompleteEvent,
     LifespanShutdownFailedEvent,
+    ASGILifespanReceiveEventType,
     ASGILifespanReceiveEvent,
-    ASGILifespanSendEvent
+    ASGILifespanSendEventType,
+    ASGILifespanSendEvent,
+    ASGILifespanReceiveCallable,
+    ASGILifespanSendCallable,
 )
 
 from .websocket import (
@@ -35,8 +43,12 @@ from .websocket import (
     WebSocketResponseBodyEvent,
     WebSocketDisconnectEvent,
     WebSocketCloseEvent,
+    ASGIWebSocketReceiveEventType,
     ASGIWebSocketReceiveEvent,
-    ASGIWebSocketSendEvent
+    ASGIWebSocketSendEventType,
+    ASGIWebSocketSendEvent,
+    ASGIWebSocketReceiveCallable,
+    ASGIWebSocketSendCallable,
 )
 
 from .application import (
@@ -59,13 +71,19 @@ __all__ = (
     "LifespanScope",
     "WWWScope",
     "Scope",
+
     "HTTPRequestEvent",
     "HTTPResponseStartEvent",
     "HTTPResponseBodyEvent",
     "HTTPServerPushEvent",
     "HTTPDisconnectEvent",
+    "ASGIHTTPReceiveEventType",
     "ASGIHTTPReceiveEvent",
+    "ASGIHTTPSendEventType",
     "ASGIHTTPSendEvent",
+    "ASGIHTTPReceiveCallable",
+    "ASGIHTTPSendCallable",
+
     "WebSocketConnectEvent",
     "WebSocketAcceptEvent",
     "WebSocketReceiveEvent",
@@ -74,14 +92,22 @@ __all__ = (
     "WebSocketResponseBodyEvent",
     "WebSocketDisconnectEvent",
     "WebSocketCloseEvent",
+    "ASGIWebSocketReceiveEventType",
     "ASGIWebSocketReceiveEvent",
+    "ASGIWebSocketSendEventType",
     "ASGIWebSocketSendEvent",
+    "ASGIWebSocketReceiveCallable",
+    "ASGIWebSocketSendCallable",
+
     "LifespanStartupEvent",
     "LifespanShutdownEvent",
     "LifespanStartupCompleteEvent",
     "LifespanStartupFailedEvent",
     "LifespanShutdownCompleteEvent",
     "LifespanShutdownFailedEvent",
+    "ASGILifespanReceiveCallable",
+    'ASGILifespanSendCallable',
+
     "ASGILifespanReceiveEvent",
     "ASGILifespanSendEvent",
     "ASGIReceiveEvent",

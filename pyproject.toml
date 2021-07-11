@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jetblack-asgi-typing"
-version = "0.2.0"
+version = "0.3.0"
 description = "Just the types for ASGI"
 authors = ["Rob Blackbourn <rob.blackbourn@gmail.com>"]
 license = "Apache-2.0"

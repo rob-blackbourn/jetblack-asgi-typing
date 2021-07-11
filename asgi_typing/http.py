@@ -22,7 +22,7 @@ The HTTP protocol should be signified to ASGI applications with a `type` value
 of 'http'.
 """
 
-from typing import Dict, Iterable, Optional, Tuple, Union
+from typing import Awaitable, Callable, Dict, Iterable, Optional, Tuple, Union
 
 try:
     from typing import Literal, TypedDict
@@ -246,9 +246,20 @@ class HTTPDisconnectEvent(TypedDict):
     type: Literal["http.disconnect"]
 
 
+ASGIHTTPReceiveEventType = Union[
+    Literal["http.request"],
+    Literal["http.disconnect"]
+]
+
 ASGIHTTPReceiveEvent = Union[
     HTTPRequestEvent,
     HTTPDisconnectEvent
+]
+
+ASGIHTTPSendEventType = Union[
+    Literal["http.response.start"],
+    Literal["http.response.body"],
+    Literal["http.response.push"],
 ]
 
 ASGIHTTPSendEvent = Union[
@@ -256,3 +267,6 @@ ASGIHTTPSendEvent = Union[
     HTTPResponseBodyEvent,
     HTTPServerPushEvent,
 ]
+
+ASGIHTTPReceiveCallable = Callable[[], Awaitable[ASGIHTTPReceiveEvent]]
+ASGIHTTPSendCallable = Callable[[ASGIHTTPSendEvent], Awaitable[None]]
