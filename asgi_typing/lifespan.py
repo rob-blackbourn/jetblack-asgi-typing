@@ -33,10 +33,7 @@ async def app(scope, receive, send):
 
 from typing import Callable, Awaitable, Union
 
-try:
-    from typing import Literal, TypedDict
-except ImportError:
-    from typing_extensions import Literal, TypedDict  # type: ignore
+from typing import Literal, TypedDict
 
 from .versions import ASGIVersions
 

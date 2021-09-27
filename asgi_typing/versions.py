@@ -2,10 +2,7 @@
 
 from typing import Union
 
-try:
-    from typing import Literal, TypedDict
-except ImportError:
-    from typing_extensions import Literal, TypedDict  # type: ignore
+from typing import Literal, TypedDict
 
 
 class ASGIVersions(TypedDict, total=False):
